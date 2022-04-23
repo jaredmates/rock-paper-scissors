@@ -1,0 +1,35 @@
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+.round-result {
+  background-color: lightblue;
+  border-radius: 8px;
+  width: 250px;
+  height: 50px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-container {
+  display: flex;
+  justify-content: center;
+  gap: 20rem;
+  margin-bottom: 25px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.reset-button {
+  margin-left: 15px;
+}
