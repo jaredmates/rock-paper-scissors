@@ -1,32 +1,35 @@
-const buttons = document.querySelectorAll("button");
+const images = document.querySelectorAll(".image");
 const playerScore = document.querySelector(".player-score");
 const computerScore = document.querySelector(".computer-score");
 const roundResult = document.querySelector(".round-result");
+const finalRoundResult = document.querySelector(".final-round-result");
+const modal = document.getElementById("myModal");
 
 let playerNum = 0;
 let computerNum = 0;
 
 // Creates Reset Button that appears after 5 rounds
-const content = document.createElement("button");
-content.classList.add("reset-button");
-content.textContent = "Play Again!";
+const content = document.querySelector(".close");
 content.addEventListener("click", () => {
   location.reload();
 });
 
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
+images.forEach((image) => {
+  image.addEventListener("click", () => {
     let computerChoice = computerPlay();
-    let selection = button.textContent;
+    let selection = capitalize(image.dataset.image);
+    console.log(selection);
     if (playerNum < 5 && computerNum < 5) {
       playRound(selection, computerChoice);
     } else {
       if (playerNum > computerNum) {
-        roundResult.textContent = "You Win!";
-        roundResult.append(content);
+        finalRoundResult.textContent = "You Win! ";
+        finalRoundResult.append(content);
+        modal.style.display = "block";
       } else {
-        roundResult.textContent = "You Lose!";
-        roundResult.append(content);
+        finalRoundResult.textContent = "You Lose! ";
+        finalRoundResult.append(content);
+        modal.style.display = "block";
       }
     }
   });
@@ -71,4 +74,8 @@ function playRound(playerSelection, computerSelection) {
     roundResult.textContent = "You Win! Scissors beats Paper.";
     increasePlayerScore();
   }
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
